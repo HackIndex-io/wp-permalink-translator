@@ -386,7 +386,8 @@ function wpt_sanitize_title_with_dashes($title, $raw_title = '', $context = 'dis
     // Restore octets.
     $title = preg_replace('|---([a-fA-F0-9][a-fA-F0-9])---|', '%$1', $title);
 
-    if (seems_utf8($title)) {
+    // seems_utf8() is deprecated since WordPress 6.9
+    if (function_exists('wp_is_valid_utf8') ? wp_is_valid_utf8($title) : seems_utf8($title)) {
         if (function_exists('mb_strtolower')) {
             $title = mb_strtolower($title, 'UTF-8');
         }
