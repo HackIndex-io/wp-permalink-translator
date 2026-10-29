@@ -38,6 +38,7 @@ function wp_permalink_translator()
         else
             $float = "left";
         if (isset($_POST['translate'])) {
+            check_admin_referer('translate');
             update_option('trans_from', sanitize_text_field($_POST['trans_from']));
             update_option('trans_to', sanitize_text_field($_POST['trans_to']));
 
@@ -55,6 +56,7 @@ function wp_permalink_translator()
 
 
         if (isset($_POST['translate-all-posts'])) {
+            check_admin_referer('translate-all-posts');
 
             translateAllPosts();
             ?>
@@ -82,10 +84,10 @@ function wp_permalink_translator()
                 <h2><?php _e('Translate From :', 'wp-permalink-translator'); ?></h2>
 
                 <input placeholder="ex : fa" name="trans_from" type='text'
-                       value="<?php echo get_option('trans_from'); ?>"/>
+                       value="<?php echo esc_attr(get_option('trans_from')); ?>"/>
                 <h2><?php _e('TO', 'wp-permalink-translator'); ?></h2>
 
-                <input placeholder="ex : en" name="trans_to" type='text' value="<?php echo get_option('trans_to'); ?>"/>
+                <input placeholder="ex : en" name="trans_to" type='text' value="<?php echo esc_attr(get_option('trans_to')); ?>"/>
 
                 <?php submit_button(__("save", 'wp-permalink-translator'), 'button-primary', 'translate'); ?>
             </form>
