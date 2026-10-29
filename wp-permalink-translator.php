@@ -1,12 +1,15 @@
 <?php
 /*
-Plugin Name: WP Permalink Translator
+Plugin Name: WP Permalink Translator (HackIndex Patched)
 Plugin URI: https://wordpress.org/plugins/wp-permalink-translator/
-Description: a plugin to translate Permalink to another languages.
-Version: 1.7.6
+Description: a plugin to translate Permalink to another languages. (HackIndex Patched)
+Version: 1.7.7
 Author: Hossin Asaadi
 Author URI: https://profiles.wordpress.org/hossin277/
 License: GPL2
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+
+Modified by HackIndex on 2026-10-29: security fixes. Fork of https://github.com/hossinasaadi/wp-permalink-translator
 */
 add_action('admin_menu', 'wpt_add_menu');
 add_action('plugins_loaded', 'wpt_plugin_load_textdomain');
